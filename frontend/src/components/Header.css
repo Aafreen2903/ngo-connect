@@ -1,0 +1,97 @@
+
+.navbar-nav {
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-link {
+    position: relative;
+    color: white !important;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #d4a437 !important;
+}
+
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background-color: #d4a437;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+
+.login-btn {
+    background: #fff;
+    color: #406942 !important;
+    border: 1px solid #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.3s ease;
+    display: inline-block;
+}
+
+.login-btn:hover {
+    background: #d4a437;
+    color: white !important;
+    border-color: #d4a437;
+    text-decoration: none;
+}
+
+
+.login-btn::after {
+    display: none !important;
+}
+
+
+
+.logout-btn {
+    background: white;
+    color: #406942;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: #d4a437;
+    color: white;
+}
+
+
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        gap: 10px;
+    }
+
+    .login-btn,
+    .logout-btn {
+        padding: 8px 14px;
+        font-size: 13px;
+    }
+}
