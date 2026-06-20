@@ -1,16 +1,26 @@
-import { Link, useNavigate } from "react-router-dom";
-import "./Header.css"
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import "./Header.css";
+
 function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const user = localStorage.getItem("user");
+  const [user, setUser] = useState(
+    localStorage.getItem("user")
+  );
+
+  useEffect(() => {
+    setUser(localStorage.getItem("user"));
+  }, [location]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
 
-     window.location.href = "/";
-   
+    setUser(null);
+
+    navigate("/");
   };
 
   return (
@@ -20,28 +30,25 @@ function Header() {
     >
       <div className="container">
         <Link
-  className="navbar-brand d-flex flex-column"
-  to="/"
-  style={{ textDecoration: "none" }}
->
-  <span className="fw-bold fs-4">
-    NGO CONNECT
-  </span>
+          className="navbar-brand d-flex flex-column"
+          to="/"
+          style={{ textDecoration: "none" }}
+        >
+          <span className="fw-bold fs-4">
+            NGO CONNECT
+          </span>
 
-  <small
-    style={{
-      fontSize: "12px",
-      color: "#d4a437",
-      marginTop: "-3px",
-      fontFamily:"-apple-system"
-    }}
-  >
-    plant today, protect tomorrow
-  </small>
-</Link>
-
-       
-
+          <small
+            style={{
+              fontSize: "12px",
+              color: "#d4a437",
+              marginTop: "-3px",
+              fontFamily: "-apple-system",
+            }}
+          >
+            plant today, protect tomorrow
+          </small>
+        </Link>
 
         <button
           className="navbar-toggler"
@@ -52,7 +59,10 @@ function Header() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div
+          className="collapse navbar-collapse"
+          id="navbarNav"
+        >
           <ul className="navbar-nav ms-auto">
 
             {/* Home */}
@@ -61,51 +71,66 @@ function Header() {
                 Home
               </Link>
             </li>
-          {" "}
-           
-            {/* Dashboard only after login */}
+
+            {/* Dashboard */}
             {user && (
               <li className="nav-item">
-                <Link className="nav-link" to="/dashboard">
+                <Link
+                  className="nav-link"
+                  to="/dashboard"
+                >
                   Dashboard
                 </Link>
               </li>
-
-              
             )}
+
+            {/* Events */}
             {user && (
               <li className="nav-item">
-                <Link className="nav-link" to="/events">
+                <Link
+                  className="nav-link"
+                  to="/events"
+                >
                   Events
                 </Link>
               </li>
-
-              
             )}
-              {" "}
-              <li className="nav-item">
-              <Link className="nav-link" to="/profile">
-                Profile
-              </Link>
-            </li>
-            
-            <li className="nav-item">
-              <Link className="nav-link" to="/contact">
-                Contact
-              </Link>
-            </li>
-             {" "}
 
-            {!user && (
+            {/* Profile */}
+            {user && (
               <li className="nav-item">
-                <Link className="login-btn text-decoration-none " to="/login">
-                  Login/SignUp
+                <Link
+                  className="nav-link"
+                  to="/profile"
+                >
+                  Profile
                 </Link>
               </li>
             )}
-             {" "}
 
-            {/* Logout if logged in */}
+            {/* Contact */}
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                to="/contact"
+              >
+                Contact
+              </Link>
+            </li>
+
+            {/* Login */}
+            {!user && (
+              <li className="nav-item">
+                <Link
+                  className="login-btn text-decoration-none"
+                  to="/login"
+                >
+                  Login / Sign Up
+                </Link>
+              </li>
+            )}
+
+            {/* Logout */}
             {user && (
               <li className="nav-item ms-2">
                 <button
@@ -116,7 +141,6 @@ function Header() {
                 </button>
               </li>
             )}
-             {" "}
 
           </ul>
         </div>

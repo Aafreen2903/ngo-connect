@@ -29,6 +29,7 @@ function Login() {
       
       alert(response.data.message);
       navigate("/dashboard");
+      
 
       console.log(response.data.user);
 
