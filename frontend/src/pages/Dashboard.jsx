@@ -13,7 +13,7 @@ function Dashboard() {
   const fetchEvents = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/events"
+        "https://ngo-connect-6z0k.onrender.com/api/events"
       );
 
       setEvents(response.data);

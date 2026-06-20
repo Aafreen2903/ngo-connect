@@ -24,7 +24,7 @@ useEffect(() => {
 const fetchEvents = async () => {
   try {
     const response = await axios.get(
-      "http://localhost:5000/api/events"
+      "https://ngo-connect-6z0k.onrender.com/api/events"
     );
 
     setEvents(response.data);
@@ -61,7 +61,7 @@ const handleSubmit = async (e) => {
   try {
     if (editId) {
       await axios.put(
-        `http://localhost:5000/api/events/${editId}`,
+        `https://ngo-connect-6z0k.onrender.com/api/events/${editId}`,
         formData
       );
 
@@ -69,7 +69,7 @@ const handleSubmit = async (e) => {
       setEditId(null);
     } else {
       await axios.post(
-        "http://localhost:5000/api/events",
+        "https://ngo-connect-6z0k.onrender.com/api/events",
         formData
       );
 
@@ -93,7 +93,7 @@ const handleSubmit = async (e) => {
 const handleDelete = async (id) => {
   try {
     await axios.delete(
-      `http://localhost:5000/api/events/${id}`
+      `https://ngo-connect-6z0k.onrender.com/api/events/${id}`
     );
 
     fetchEvents();

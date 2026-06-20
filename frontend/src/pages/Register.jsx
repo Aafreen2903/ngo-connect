@@ -18,7 +18,7 @@ function Register() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/register",
+        "https://ngo-connect-6z0k.onrender.com/api/register",
         userData
       );
 
