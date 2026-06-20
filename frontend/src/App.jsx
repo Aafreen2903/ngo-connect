@@ -19,7 +19,7 @@ function App() {
           <Route path="/register" element={<Register />} />
          
           <Route
-            path="dashboard"
+            path="/dashboard"
             element={
               <ProtectedRoute>
                 <Dashboard />
@@ -29,6 +29,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/events" element={<Events />} />
           <Route path="/contact" element={<Contact />} />
+          
         </Route> 
       </Routes>
     </BrowserRouter>

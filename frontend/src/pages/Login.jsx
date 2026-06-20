@@ -28,7 +28,7 @@ function Login() {
 );
       
       alert(response.data.message);
-      window.location.href = "/dashboard";
+      navigate("/dashboard");
 
       console.log(response.data.user);
 
