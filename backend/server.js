@@ -10,7 +10,14 @@ const User=require("./models/User");
 const Event=require("./models/Event");
 const app=express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://your-project.vercel.app"
+    ]
+  })
+);
 app.use(express.json());
 
 mongoose
